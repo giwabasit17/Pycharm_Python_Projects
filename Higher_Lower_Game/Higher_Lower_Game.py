@@ -17,7 +17,7 @@ def modify_word(word):
     return f"{name}, a {description}, from {country}"
 
 
-def compare(follower, first_word_follower,second_word_follower):
+def compare(follower, first_word_follower, second_word_follower):
     if first_word_follower > second_word_follower:
         return follower == 'a'
     else:
