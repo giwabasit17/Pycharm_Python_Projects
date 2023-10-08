@@ -1,8 +1,8 @@
 from Coffee_machine_data import logo, resources, MENU
 import time
-
-
 money = 0
+
+
 def modify_report(input):
     water = input['water']
     milk = input['milk']
@@ -74,4 +74,5 @@ def coffee_machine():
                 payment = process_coin()
                 transaction_successful(payment, drink)
                 make_coffee(order, drink["ingredients"])
+
 coffee_machine()
