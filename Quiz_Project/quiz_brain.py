@@ -1,7 +1,6 @@
 class Brain:
     def __init__(self, quiz):
         self.quiz = quiz
-        self.question_number = 0
         self.scores = {}
         self.time_limit = 12
 
@@ -14,22 +13,20 @@ class Brain:
     def calculate_scores(self, num_players, total_quiz):
         highest_score = 0
         highest_scorer = None
-        for i in range(num_players):
-            player_name = input(f"Enter your name (Player {i + 1}): ")
+        for player in range(num_players):
+            player_name = input(f"Enter your name (Player {player + 1}): ")
             player_score = 0
             time_left = self.time_limit
-            for j in range(total_quiz):
-                print(f"Question {j + 1}: {self.quiz[j].text}")
-                player_answer = input(f"Player {i + 1}, enter your answer (True/False): ").lower()
+            for question_number in range(total_quiz):
+                print(f"Question {question_number + 1}: {self.quiz[question_number].text}")
+                player_answer = input(f"Player {player + 1}, enter your answer (True/False): ").lower()
                 while player_answer not in ['true', 'false']:
                     player_answer = input("Invalid answer. Please enter your answer (True/False): ").lower()
-                if player_answer == self.quiz[j].answer.lower():
+                if player_answer == self.quiz[question_number].answer.lower():
                     player_score += 1
                     print("Correct!")
                 else:
                     print("Incorrect!")
-                self.question_number += 1
-                time_left -= 1
                 if time_left == 0:
                     break
             self.scores[player_name] = player_score
